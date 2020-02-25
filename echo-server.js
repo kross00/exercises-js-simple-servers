@@ -17,9 +17,9 @@ let server = net.createServer(function(connection) {
   // This tells Node what to do whenever we receive data over this connection.
   // The clientData argument contains whatever data the client sent to us.
   connection.on('data', function(clientData) {
-    // Use console.log to record when a client sends us data.
-    // Use connection.write(...) to send data to the client
-
+    // console.log(clientData);
+    console.log(`SERVER HAS RECEIVED ${clientData}`);
+    connection.write(clientData.toString().toUpperCase());
     // Remember, an echo server sends back exactly what was received.
   });
 

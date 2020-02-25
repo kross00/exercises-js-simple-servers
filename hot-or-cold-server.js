@@ -23,19 +23,19 @@ let server = net.createServer(function(connection) {
     if (!Number.isInteger(userGuess)) {
       // The user entered something other than an integer
 
-      // Use connection.write(...) to print out a useful error message
-      // and some instructions for the user.
+      connection.write('You must guess a number');
+      // console.log('Please guess a number');
     } else if (userGuess < numberToGuess) {
       // The user's guess was too small.
-      // Use connection.write(...) to tell them they're too cold.
+      connection.write('Guess again. You are too cold.');
     } else if (userGuess > numberToGuess) {
       // The user's guess was too large.
-      // Use connection.write(...) to tell them they're too hot.
+      connection.write('Guess again. You are too hot.');
     } else if (userGuess === numberToGuess) {
       // The user guessed correctly!
 
-      // Use connection.write(...) to tell them they guessed correctly
-      // Use connection.end() to end the client connection
+      connection.write('Wow! Great Job!');
+      connection.end('Goodbye');
     }
   });
 
